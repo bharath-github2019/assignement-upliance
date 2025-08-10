@@ -1,4 +1,5 @@
- command = "npm run build"
+[build]
+  command = "npm run build"
   publish = "dist"
 
   [build.rollup]
@@ -12,3 +13,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
+  status = 200
