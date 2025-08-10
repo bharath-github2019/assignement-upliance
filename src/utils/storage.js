@@ -1,5 +1,5 @@
-export function saveToStorage(key: string, value: any) {
-  localStorage.setItem(key, JSON.stringify(value));
+export function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
 export function getFromStorage(key: string) {
