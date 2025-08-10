@@ -1,16 +1,8 @@
-export function loadAll() {
-  const entries = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key) {
-      const value = localStorage.getItem(key);
-      entries.push({ key, value: value ? JSON.parse(value) : null });
-    }
-  }
-  return entries;
+export function saveForm(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function loadById(id: string) {
-  const item = localStorage.getItem(id);
+export function getFromStorage(key: string) {
+  const item = localStorage.getItem(key);
   return item ? JSON.parse(item) : null;
 }
