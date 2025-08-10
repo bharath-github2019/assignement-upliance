@@ -1,22 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+ command = "npm run build"
+  publish = "dist"
 
-export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: {
-    include: [
-      '@mui/material',
-      '@mui/icons-material',
-      '@emotion/react',
-      '@emotion/styled'
+  [build.rollup]
+    external = [
+      "@mui/material/styles/index.js",
+      "@mui/material/utils/index.js",
+      "@mui/material/Alert/index.js"
+      # add other problematic MUI modules here as needed
     ]
-  },
-  ssr: {
-    noExternal: [
-      '@mui/material',
-      '@mui/icons-material',
-      '@emotion/react',
-      '@emotion/styled'
-    ]
-  }
-})
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
