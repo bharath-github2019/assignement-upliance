@@ -1,16 +1,22 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-  [build.rollup]
-    external = [
-      "@mui/material/styles/index.js",
-      "@mui/material/utils/index.js",
-      "@mui/material/Alert/index.js"
-      # add other problematic MUI modules here as needed
+export default defineConfig({
+  plugins: [react()],
+  optimizeDeps: {
+    include: [
+      '@mui/material',
+      '@mui/icons-material',
+      '@emotion/react',
+      '@emotion/styled'
     ]
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  },
+  ssr: {
+    noExternal: [
+      '@mui/material',
+      '@mui/icons-material',
+      '@emotion/react',
+      '@emotion/styled'
+    ]
+  }
+})
